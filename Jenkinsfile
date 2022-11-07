@@ -1,39 +1,6 @@
-pipeline{
-
-	agent any
-
-	environment {
-		DOCKERHUB_CREDENTIALS=credentials('medalman-cred')
-	}
-
-	stages {
-
-		stage('Build') {
-
-			steps {
-				sh 'docker build -t MedalMan/myproject:latest .'
-			}
-		}
-
-		stage('Login') {
-
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-
-		stage('Push') {
-
-			steps {
-				sh 'docker push MedalMan/myproject:latest'
-			}
-		}
-	}
-
-	post {
-		always {
-			sh 'docker logout'
-		}
+node{
+	stage('SCM Checkout'){
+          git branch: 'main', credentialsId: 'medal-cred', url: 'https://github.com/MedalMan/myproject'
 	}
 
 }
