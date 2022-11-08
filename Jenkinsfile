@@ -10,7 +10,7 @@ pipeline{
 		}
 		stage('Build Docker Image'){
 			steps{
-				sh 'docker ps';
+				sh 'docker build -t rahi776/node-app:latest';
 			}
 
 		}
