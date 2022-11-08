@@ -1,5 +1,13 @@
-node{
-	stage('SCM Checkout'){
-          git branch: 'main', credentialsId: 'medal-cred', url: 'https://github.com/MedalMan/myproject'
+pipeline{
+	agent any;
+	stages{
+		stage('SCM Checkout'){
+			steps{
+				git branch: 'main', credentialsId: 'medal-cred', url: 'https://github.com/MedalMan/myproject'
+			}
+
+		}
 	}
 }
+
+
