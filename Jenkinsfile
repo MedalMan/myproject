@@ -8,10 +8,14 @@ pipeline{
 			}
 
 		}
-		stage('Build image'){
-			dockerImage = docker.build("rahi776/node-app:latest")
+		stage('Build Docker Image'){
+			steps{
+				sh 'docker build -t Rahi776/test-1.0 .';
+			}
+
 		}
 	}
 }
+
 
 
