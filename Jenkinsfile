@@ -8,8 +8,9 @@ pipeline{
 			}
 
 		}
-		stage('build docker image'){
+		stage('Build Docker Image'){
 			steps{
+				sh 'docker  login  -u "Rahi776" -p "Rahi@2002";'
 				sh 'docker build -t test-1.0 .';
 			}
 
