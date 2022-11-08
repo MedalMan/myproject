@@ -12,6 +12,15 @@ pipeline{
 			steps{
 				sh 'docker build -t rahi776/node-app:latest .';
 			}
+		}
+		stage('Push Docker Image'){
+			steps{
+			withCredentials([string(credentialsId: 'docker-key', variable: 'Docker-hubpwd')]) {
+				sh 'docker login -u rahi776 -p ${Docker-hubpwd}'
+				}
+				
+				sh 'docker push rahi776/node-app:latest';
+			}
 
 		}
 	}
