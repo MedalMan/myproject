@@ -9,13 +9,9 @@ pipeline{
 
 		}
 		stage('Build Docker Image'){
-			steps{
-				dockerImage = docker.build("rahi776/node-app:latest")
-			}
-
+			dockerImage = docker.build("rahi776/node-app:latest")
 		}
 	}
 }
-
 
 
