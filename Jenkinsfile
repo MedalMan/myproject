@@ -15,10 +15,8 @@ pipeline{
 		}
 		stage('Push Docker Image'){
 			steps{
-			withCredentials([string(credentialsId: 'docker-key', variable: 'Docker-hubpwd')]) {
-				sh "docker login -u rahi776 -p ${Docker-hubpwd}"
-				}
-				sh 'docker push rahi776/node-app:latest';
+				sh 'echo $docker_cred | docker login -u $docker_cred --password-stdin'
+			    sh 'docker push rahi776/node-app:latest';
 			}
 
 		}
