@@ -1,9 +1,5 @@
 pipeline{
 	agent any;
-	environment{
-		DOCKERHUB_CREDENTIALS= credentials('docker_cred')
-		}
-	
 	stages{
 		stage('SCM Checkout'){
 			steps{
@@ -18,7 +14,6 @@ pipeline{
 		}
 		stage('Push Docker Image'){
 			steps{
-				sh 'echo $docker_cred | docker login -u $docker_cred --password-stdin'
 			    sh 'docker push rahi776/node-app:latest';
 			}
 
